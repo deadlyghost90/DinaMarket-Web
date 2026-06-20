@@ -5,12 +5,27 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    base: './',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
         'node-fetch': path.resolve(__dirname, 'src/stubs.ts'),
         'formdata-polyfill': path.resolve(__dirname, 'src/stubs.ts'),
+      },
+    },
+    build: {
+      rollupOptions: {
+        output: {
+          entryFileNames: 'js/[name]-[hash].js',
+          chunkFileNames: 'js/[name]-[hash].js',
+          assetFileNames: (assetInfo) => {
+            if (assetInfo.name && assetInfo.name.endsWith('.css')) {
+              return 'css/[name]-[hash][extname]';
+            }
+            return 'assets/[name]-[hash][extname]';
+          },
+        },
       },
     },
     server: {
