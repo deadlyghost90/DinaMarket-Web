@@ -1,0 +1,6 @@
+{
+  "name": "DinaMarket Pakistan",
+  "description": "A decentralized local marketplace platform in Pakistan supporting buyer-seller direct wallet transactions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
